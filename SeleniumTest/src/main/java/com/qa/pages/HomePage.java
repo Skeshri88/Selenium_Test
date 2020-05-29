@@ -1,5 +1,9 @@
 package com.qa.pages;
 
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -8,75 +12,28 @@ import com.qa.base.TestBase;
 
 public class HomePage extends TestBase
 {
-	@FindBy(xpath="//a[@href='https://demoqa.com/selectable/']")
-	WebElement selectablButton;
+	
+	@FindBy(xpath="//div[@class='category-cards']//div[5]")
+     public WebElement InteractionBtn;
 	
 	
-	@FindBy(xpath="//a[@href='https://demoqa.com/html-contact-form/']")
-	WebElement contactclick;
-	
-	@FindBy(xpath="//a[text()='Droppable']")
-	WebElement Droppable;
-	
-	@FindBy(xpath="//a[text()='Datepicker']")
-	WebElement DatePicker;
-	
-	@FindBy(xpath="//a[text()='Selectmenu']")
-	WebElement SelectMenu;
-	
-	
-	@FindBy(xpath="//a[text()='Controlgroup']")
-	WebElement ControlGroup;
-	
-	
-	public HomePage()
+	public void HomePage()
 	{
-		//Initializing all above elements 
-		PageFactory.initElements(driver,this);
+		PageFactory.initElements(driver, this);
 	}
 	
 	
-	public SelectablePage clickonselectablelink()
+	public InteractionsPage clickInteractionBtn() throws InterruptedException
 	{
-		selectablButton.click();
-		return new SelectablePage();
+		JavascriptExecutor js= (JavascriptExecutor)driver;
+		js.executeScript("window.scrollBy(0, 1000)");	
+		InteractionBtn.isEnabled();
+		InteractionBtn.isDisplayed();
+		System.out.println(driver);
+		InteractionBtn.click();
+		return new InteractionsPage();
 	}
+	 
 	
-	
-
-
-	public  ContactPage clickonContact() throws InterruptedException
-	{
-		Thread.sleep(5000);
-		contactclick.click();
-		Thread.sleep(5000);;
-		return  new ContactPage();
-	}
-	
-	public  DroppablePage clickonDroppable()
-	{
-		Droppable.click();	
-		return  new DroppablePage();
-	}
-	
-   public DatePickerPage clickDatePicker()
-   {
-	   DatePicker.click();
-	   return new DatePickerPage();
-   }
-	   
-   public SelectMenuPage selectmenu()
-   
-   {
-	   SelectMenu.click();
-	    return new SelectMenuPage();
-   }
-   
-public ControlGroup clickControlGroup()
-   
-   {
-	    ControlGroup.click();
-	    return new ControlGroup();
-   }
 
 }

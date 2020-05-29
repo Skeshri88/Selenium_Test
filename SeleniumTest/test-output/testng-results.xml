@@ -2,21 +2,28 @@
 <testng-results skipped="0" failed="1" total="1" passed="0">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="74535" started-at="2020-05-20T16:52:25Z" finished-at="2020-05-20T16:53:39Z">
+  <suite name="Default suite" duration-ms="46211" started-at="2020-05-29T13:10:20Z" finished-at="2020-05-29T13:11:06Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="74535" started-at="2020-05-20T16:52:25Z" finished-at="2020-05-20T16:53:39Z">
-      <class name="com.qa.testcases.Assignment2">
-        <test-method status="PASS" signature="setUp()[pri:0, instance:com.qa.testcases.Assignment2@7cf10a6f]" name="setUp" is-config="true" duration-ms="54538" started-at="2020-05-20T22:22:25Z" finished-at="2020-05-20T22:23:19Z">
+    <test name="Default test" duration-ms="46211" started-at="2020-05-29T13:10:20Z" finished-at="2020-05-29T13:11:06Z">
+      <class name="com.qa.testcases.Assignment1Quest1">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:com.qa.testcases.Assignment1Quest1@7cf10a6f]" name="setUp" is-config="true" duration-ms="44896" started-at="2020-05-29T18:40:20Z" finished-at="2020-05-29T18:41:05Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="FAIL" signature="VerificationDatePickerTest()[pri:0, instance:com.qa.testcases.Assignment2@7cf10a6f]" name="VerificationDatePickerTest" duration-ms="12957" started-at="2020-05-20T22:23:19Z" finished-at="2020-05-20T22:23:32Z">
-          <exception class="java.lang.NullPointerException">
+        <test-method status="FAIL" signature="VerificationSelectablePage()[pri:0, instance:com.qa.testcases.Assignment1Quest1@7cf10a6f]" name="VerificationSelectablePage" duration-ms="387" started-at="2020-05-29T18:41:05Z" finished-at="2020-05-29T18:41:05Z">
+          <exception class="java.lang.Error">
+            <message>
+              <![CDATA[Unresolved compilation problem: 
+	Syntax error, insert ";" to complete BlockStatements
+]]>
+            </message>
             <full-stacktrace>
-              <![CDATA[java.lang.NullPointerException
-	at com.qa.pages.RegisterPage.RegisterwithFields(RegisterPage.java:86)
-	at com.qa.testcases.Assignment2.VerificationDatePickerTest(Assignment2.java:37)
+              <![CDATA[java.lang.Error: Unresolved compilation problem: 
+	Syntax error, insert ";" to complete BlockStatements
+
+	at com.qa.pages.SelectablePage.clickCrasBtn(SelectablePage.java:35)
+	at com.qa.testcases.Assignment1Quest1.VerificationSelectablePage(Assignment1Quest1.java:32)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
@@ -43,15 +50,15 @@
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:177)
 ]]>
             </full-stacktrace>
-          </exception> <!-- java.lang.NullPointerException -->
+          </exception> <!-- java.lang.Error -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- VerificationDatePickerTest -->
-        <test-method status="PASS" signature="actionaftrtest()[pri:0, instance:com.qa.testcases.Assignment2@7cf10a6f]" name="actionaftrtest" is-config="true" duration-ms="6322" started-at="2020-05-20T22:23:33Z" finished-at="2020-05-20T22:23:39Z">
+        </test-method> <!-- VerificationSelectablePage -->
+        <test-method status="PASS" signature="actionaftrtest()[pri:0, instance:com.qa.testcases.Assignment1Quest1@7cf10a6f]" name="actionaftrtest" is-config="true" duration-ms="822" started-at="2020-05-29T18:41:05Z" finished-at="2020-05-29T18:41:06Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- actionaftrtest -->
-      </class> <!-- com.qa.testcases.Assignment2 -->
+      </class> <!-- com.qa.testcases.Assignment1Quest1 -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

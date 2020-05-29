@@ -6,10 +6,10 @@ import org.testng.annotations.Test;
 
 import com.qa.base.TestBase;
 import com.qa.pages.HomePage;
+import com.qa.pages.InteractionsPage;
 import com.qa.pages.SelectablePage;
 
 
-//Go to Selectable page then text ==text1 validation need to check
 public class Assignment1Quest1 extends TestBase
 {
 	public Assignment1Quest1()
@@ -25,15 +25,16 @@ public class Assignment1Quest1 extends TestBase
 	}
 	
 	@Test
-	public void VerificationSelectablePage()
+	public void VerificationSelectablePage() 
 	{
-		HomePage homepage= new HomePage();
-		homepage.clickonselectablelink();
-		
-		
-		SelectablePage selectablepage= new SelectablePage();
-		selectablepage.ClickAllItemList();
-		selectablepage.VerifySelectableText();	
+	
+	SelectablePage  selectablepage= new SelectablePage();
+	selectablepage.clickCrasBtn();
+	selectablepage.clickdapiBusBtn();
+	selectablepage.clickMorbiBtn();
+	selectablepage.clickPortaBtn();
+	
+	
 		
 	}
 	
@@ -43,6 +44,6 @@ public class Assignment1Quest1 extends TestBase
 	{
 		driver.close();
 	}
+}
 	
 
-}

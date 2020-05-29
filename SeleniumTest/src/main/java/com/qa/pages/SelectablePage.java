@@ -1,6 +1,6 @@
 package com.qa.pages;
 
-import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -9,79 +9,97 @@ import org.openqa.selenium.support.PageFactory;
 import com.qa.base.TestBase;
 
 public class SelectablePage extends TestBase
-
 {
-	public String text;
+	@FindBy(xpath="//li[text()='Cras justo odio']")
+	public WebElement CrasBtn;
 	
 	
-	//Customized Xpath of all element
-	@FindBy(xpath="//li[@class='ui-widget-content ui-selectee']")
-    public List<WebElement> AllItemList;
+	@FindBy(xpath="//li[text()='Dapibus ac facilisis in']")
+	public WebElement DapiBusBtn;
 	
-	//Xpath of Selectable Text
-	@FindBy(xpath="//*[@id=\"content\"]/h1")
-    public WebElement SelectableText;
+	@FindBy(xpath="//li[text()='Morbi leo risus']")
+	public WebElement MorbiBtn;
 	
 	
-	//Page factory of Initialized elements
+	@FindBy(xpath="//li[text()='Porta ac consectetur ac']")
+	public WebElement PortaBtn;
+	
+	
 	public SelectablePage()
 	{
 		PageFactory.initElements(driver,this);
 	}
 	
-	
-	//Getting count of Item
-	public void ClickAllItemList()
+	public void clickCrasBtn()
 	{
-		int count= AllItemList.size();
-		System.out.println(count);	
-		
-	
-		
-		    //How to get this text item from config.property and verify the values
-			 
-			 
-			 for (WebElement count1: AllItemList)
-				{  
-					String text=count1.getText();
-					System.out.println(text);
-					count1.click();	
-					if(prop.getProperty("A")==text)
-					{
-						System.out.println("Test Pass");
-					}
-					
-					else
-					{
-						System.out.println("Test Fail");
-					}
-					
-				}
-			 
-			 
-			 
-		}
-		
-		
-		
-		
-
-	
-	
-	public void VerifySelectableText()
-	{
-		if( SelectableText.isDisplayed())
+		driver.manage().timeouts().implicitlyWait(30,TimeUnit.SECONDS)
+		String CrasBtntext=  CrasBtn.getText();
+		CrasBtn.click();
+		if(prop.getProperty("CrasBtn1").equalsIgnoreCase(CrasBtntext))
 		{
-			System.out.println("Selectable Text is available");
+			System.out.println("Test Pass");
 		}
-		
 		else
 		{
-			System.out.println("Selectable Text is not available");
+			System.out.println("Test Fail");
 		}
 		
 	}
 	
+	
+	public void clickdapiBusBtn()
+	{
+		String DapiBusBtnText=  DapiBusBtn.getText();
+		DapiBusBtn.click();
+		if(prop.getProperty("DapiBusBtn1").equalsIgnoreCase(DapiBusBtnText))
+		{
+			System.out.println("Test Pass");
+		}
+		else
+		{
+			System.out.println("Test Fail");
+		}
+		
+	}
+	
+	
+	public void clickMorbiBtn()
+	{
+		String MorbiBtnText=  MorbiBtn.getText();
+		MorbiBtn.click();
+		if(prop.getProperty("MorbiBtn1").equalsIgnoreCase(MorbiBtnText))
+		{
+			System.out.println("Test Pass");
+		}
+		else
+		{
+			System.out.println("Test Fail");
+		}
+		
+	}
+	
+	
+	
+	
+	public void clickPortaBtn()
+	{
+		String PortaBtnText=  PortaBtn.getText();	
+		PortaBtn.click();
+		if(prop.getProperty("PortaBtn1").equalsIgnoreCase(PortaBtnText))
+		{
+			System.out.println("Test Pass");
+		}
+		else
+		{
+			System.out.println("Test Fail");
+		}
+		
+	}
+	
+	
+	
+	
+	
+	
 
 }
-

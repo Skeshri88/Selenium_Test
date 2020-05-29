@@ -5,10 +5,9 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import com.qa.base.TestBase;
-import com.qa.pages.ContactHomePage;
-import com.qa.pages.ContactPage;
 import com.qa.pages.HomePage;
 import com.qa.pages.SelectablePage;
+import com.qa.pages.StudentRegistrationPage;
 
 public class Assignment1Ques2 extends TestBase
 {
@@ -27,22 +26,14 @@ public class Assignment1Ques2 extends TestBase
 	@Test
 	public void VerificationContactTest() throws InterruptedException
 	{
-		HomePage homepage= new HomePage();
-		homepage.clickonContact();
+		StudentRegistrationPage studentregistrationpage= new StudentRegistrationPage();
+		studentregistrationpage.FirstNameEnter();
+		studentregistrationpage.LastNameEnter();
+		studentregistrationpage.EmailEnter();
+		studentregistrationpage.MaleClick();
+		studentregistrationpage.MobileNumberEnter();
+		studentregistrationpage.DOBSelection();
 		
-				
-		ContactPage contactpage= new ContactPage();
-		contactpage.verifyHTMLContactFormText();
-		contactpage.EnterFirstName();
-		contactpage.EnterLastName();
-		contactpage.EnterCountry();
-		contactpage.EnterSubject();
-		contactpage.verifyGoogleLink();
-		contactpage.verifyGoogleLinkishere();
-		contactpage.clickSubmitButton();
-		
-		ContactHomePage contacthomepage= new ContactHomePage();
-		contacthomepage.VerifySearchButton();
 		
 		
 		

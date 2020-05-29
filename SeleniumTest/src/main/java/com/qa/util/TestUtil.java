@@ -14,7 +14,7 @@ import com.qa.base.TestBase;
 public class TestUtil extends TestBase
 {
 	public static long PAGE_LOAD_TIMEOUT = 20;
-	public static long IMPLICIT_WAIT = 20;
+	public static long IMPLICIT_WAIT = 30;
 	static Workbook book;
 	static Sheet sheet;
 	public static String TESTDATA_SHEET_PATH = "E:\\Selenium_Automation\\selenium_Top_Gear\\src\\main\\java\\com\\qa\\testdata\\LoginTestData.xls";

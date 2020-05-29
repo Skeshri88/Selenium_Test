@@ -51,12 +51,12 @@ public class TestBase
 		
 		if(browserName.equals("chrome"))
 		{
-			System.setProperty("webdriver.chrome.driver", "E:\\Selenium_Automation\\Selenium_Top_Gear\\Driver\\ChromeDriver\\chromedriver.exe");	
+			System.setProperty("webdriver.chrome.driver", "C:\\Users\\Admin\\SeleniumTest\\Driver\\ChromeDriver\\chromedriver.exe");	
 			driver = new ChromeDriver(); 
 		}
 		else if(browserName.equals("FF"))
 		{
-			System.setProperty("webdriver.gecko.driver", "E:\\Selenium_Automation\\Selenium_Top_Gear\\Driver\\GeckoDriver\\geckodriver.exe");	
+			System.setProperty("webdriver.gecko.driver", "C:\\Users\\Admin\\SeleniumTest\\Driver\\GeckoDriver\\geckodriver.exe");	
 			driver = new FirefoxDriver(); 
 		}
 		
@@ -64,7 +64,7 @@ public class TestBase
 		driver.manage().deleteAllCookies();
 		driver.manage().timeouts().pageLoadTimeout(TestUtil.PAGE_LOAD_TIMEOUT, TimeUnit.SECONDS);
 		driver.manage().timeouts().implicitlyWait(TestUtil.IMPLICIT_WAIT, TimeUnit.SECONDS);
-		driver.get(prop.getProperty("url2"));
+		driver.get(prop.getProperty("url1"));
 		
 	}
 	
