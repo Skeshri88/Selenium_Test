@@ -1,8 +1,16 @@
 package com.qa.pages;
 
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.qa.base.TestBase;
 
@@ -31,8 +39,6 @@ public class StudentRegistrationPage extends TestBase
 	@FindBy(xpath="//input[@id='dateOfBirthInput']")
     public WebElement DOB;
 		
-	@FindBy(xpath="//div[@class='subjects-auto-complete__value-container subjects-auto-complete__value-container--is-multi css-1hwfws3']")
-    public WebElement Subject;
 	
 	@FindBy(xpath="//label[text()='Sports']")
     public WebElement Hobbies;
@@ -50,96 +56,48 @@ public class StudentRegistrationPage extends TestBase
 	@FindBy(xpath="//div[@id='city']")
     public WebElement City;
 	
+	@FindBy(xpath="//button[@id='closeLargeModal']")
+    public WebElement DetailsPopupClose;
+	
+	
 		
-   public void StudentRegistrationPage()
+   public StudentRegistrationPage()
    {
 	PageFactory.initElements(driver, this);
    }
    
    
    
-   public void validateRegistrationText()
-   {
-	   if(StudentRegistrationTxt.isDisplayed())
-	   {
-		   System.out.println("Test Pass");
-	   }
+   
 	   
-	   else
-		   
-	   {
-		   System.out.println("Test Fail");
-	   }
-   }
+  
    
-   
-   
-   public void FirstNameEnter()
+   public void registrationdetails(String firstname,String lastname,String email
+		   , String picture,
+		   String currentaddress,String selectstate,String selectcity) 
    {
-	   FirstName.sendKeys(prop.getProperty("FirstName"));   
-   }
-   
-   public void LastNameEnter()
-   {
-	   LastName.sendKeys(prop.getProperty("LastName"));
-   }
-   
-   public void EmailEnter()
-   {
-	   Email.sendKeys(prop.getProperty("Email"));
-   }
-   
-   public void MaleClick()
-   {
+	   driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+	   FirstName.sendKeys(firstname);	   
+	   LastName.sendKeys(lastname);
+	   Email.sendKeys(email);
 	   GenderMale.click();
-   }
-   
-   public void MobileNumberEnter()
-   {
-	   Mobile.sendKeys(prop.getProperty("Mobile"));
-   }
-   
-   public void DOBSelection()
-   {
-	   DOB.sendKeys(prop.getProperty("DOB"));
-   }
-   
-   public void SubjectEnter()
-   {
-	   Subject.sendKeys(prop.getProperty("Sujects"));
-   }
-   
-   public void HobbiesClick()
-   {
 	   Hobbies.click();
-   }
-   
-   
-   public void pictureSelect()
-   {
+	   Picture.click();
+	   Picture.sendKeys(picture);
+	   CurrentAddress.sendKeys(currentaddress);
 	   
-   }
-   
-   public void CurrentAddressEnter()
-   {
-	   CurrentAddress.sendKeys(prop.getProperty("CurrentAddress"));
-   }
-   
-   public void  StateandCitySelect()
-   {
 	   State.click();
+	   Select state= new Select(State);
+	   state.selectByValue(selectstate);
 	   
+	   City.click();
+	   Select city= new Select(City);
+	   state.selectByValue(selectcity);
+	   DetailsPopupClose.click();
 	   
    }
-   
-   
-   
-   
-   
-   
-	
-	
-      
-      
-      
 }
+      
+      
+      
+

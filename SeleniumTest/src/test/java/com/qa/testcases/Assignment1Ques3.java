@@ -5,10 +5,9 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import com.qa.base.TestBase;
-import com.qa.pages.ContactHomePage;
-import com.qa.pages.ContactPage;
 import com.qa.pages.DroppablePage;
 import com.qa.pages.HomePage;
+import com.qa.pages.InteractionsPage;
 
 public class Assignment1Ques3 extends TestBase
 {
@@ -28,15 +27,15 @@ public class Assignment1Ques3 extends TestBase
 	public void VerificationDroppableTest() throws InterruptedException
 	{
 		HomePage homepage= new HomePage();
-		homepage.clickonDroppable();
+		homepage.clickInteractionBtn();
 		
-		DroppablePage droppablepage= new DroppablePage();
-		droppablepage.verifyDraggableText();
-		droppablepage.OperationDrag();
-		droppablepage.VerificationDropedText();
+		InteractionsPage   interactionspage= new InteractionsPage();
+		interactionspage.clickdroppable();
 		
 		
-		
+		DroppablePage droppablepage = new DroppablePage();
+		droppablepage.DragandDrop();
+		droppablepage.verifyDropped();		
 	}
 	
 	

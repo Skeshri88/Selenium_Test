@@ -5,14 +5,21 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 
 import com.qa.base.TestBase;
 
 public class SelectablePage extends TestBase
 {
+	
+	@FindBy(xpath="//div[text()='Selectable']")
+	public WebElement SelectableTxt;
+	
+	@FindBy(xpath="//a[@id='demo-tab-list']")
+	public WebElement listselected;
+	
 	@FindBy(xpath="//li[text()='Cras justo odio']")
 	public WebElement CrasBtn;
-	
 	
 	@FindBy(xpath="//li[text()='Dapibus ac facilisis in']")
 	public WebElement DapiBusBtn;
@@ -30,69 +37,63 @@ public class SelectablePage extends TestBase
 		PageFactory.initElements(driver,this);
 	}
 	
-	public void clickCrasBtn()
+	public void verifySelectableTxt(String expectedvalue)
 	{
-		driver.manage().timeouts().implicitlyWait(30,TimeUnit.SECONDS)
+		String selectabletext=  SelectableTxt.getText();
+		Assert.assertEquals(selectabletext, expectedvalue);	
+	}
+	
+	public void verifylistselected(String expectedvalue)
+	
+	{
+		String listtext=  listselected.getText();
+		Assert.assertEquals(listtext, expectedvalue);
+		listselected.isSelected();
+		
+		
+	}
+	
+	public void verifylistTxt(String expectedvalue)
+	{
+		String selectabletext=  SelectableTxt.getText();
+		Assert.assertEquals(selectabletext, expectedvalue);	
+	}
+	
+	
+	public void clickCrasBtn(String expectedvalue)
+	{		
 		String CrasBtntext=  CrasBtn.getText();
 		CrasBtn.click();
-		if(prop.getProperty("CrasBtn1").equalsIgnoreCase(CrasBtntext))
-		{
-			System.out.println("Test Pass");
-		}
-		else
-		{
-			System.out.println("Test Fail");
-		}
+		Assert.assertEquals(CrasBtntext, expectedvalue);		
 		
 	}
 	
 	
-	public void clickdapiBusBtn()
+	public void clickdapiBusBtn(String expectedvalue)
 	{
 		String DapiBusBtnText=  DapiBusBtn.getText();
 		DapiBusBtn.click();
-		if(prop.getProperty("DapiBusBtn1").equalsIgnoreCase(DapiBusBtnText))
-		{
-			System.out.println("Test Pass");
-		}
-		else
-		{
-			System.out.println("Test Fail");
-		}
+		Assert.assertEquals(DapiBusBtnText, expectedvalue);
 		
 	}
 	
 	
-	public void clickMorbiBtn()
+	public void clickMorbiBtn(String expectedvalue)
 	{
 		String MorbiBtnText=  MorbiBtn.getText();
 		MorbiBtn.click();
-		if(prop.getProperty("MorbiBtn1").equalsIgnoreCase(MorbiBtnText))
-		{
-			System.out.println("Test Pass");
-		}
-		else
-		{
-			System.out.println("Test Fail");
-		}
+		Assert.assertEquals(MorbiBtnText, expectedvalue);
+		
+		
 		
 	}
+		
 	
-	
-	
-	
-	public void clickPortaBtn()
+	public void clickPortaBtn(String expectedvalue)
 	{
 		String PortaBtnText=  PortaBtn.getText();	
 		PortaBtn.click();
-		if(prop.getProperty("PortaBtn1").equalsIgnoreCase(PortaBtnText))
-		{
-			System.out.println("Test Pass");
-		}
-		else
-		{
-			System.out.println("Test Fail");
-		}
+		Assert.assertEquals(PortaBtnText, expectedvalue);
 		
 	}
 	

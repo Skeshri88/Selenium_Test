@@ -1,18 +1,18 @@
 package com.qa.testcases;
 
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import com.qa.base.TestBase;
 import com.qa.pages.DatePickerPage;
-import com.qa.pages.DroppablePage;
 import com.qa.pages.HomePage;
+import com.qa.pages.InteractionsPage;
+import com.qa.util.TestUtil;
 
-//date entered could not verified
 public class Assignment1Ques4 extends TestBase
 {
-	
+	String sheetName= "Assignment4";
 	public Assignment1Ques4()
 	{
 		super();
@@ -23,27 +23,30 @@ public class Assignment1Ques4 extends TestBase
 	{
 		initialization();
 	
-	}
-	
-	@Test
-	public void VerificationDatePickerTest() throws InterruptedException
+	}	
+	@DataProvider
+	public Object[][] getTestData()
 	{
-		HomePage homepage= new HomePage();
-		homepage.clickDatePicker();
-		DatePickerPage datepickerpage= new DatePickerPage();
-		datepickerpage.VerificationDatePickerText();
-		datepickerpage.Selectdate();
-		datepickerpage.verificationDate();
-		
+		Object data[][]=TestUtil.getTestData(sheetName);
+	    return data;
+	}
 			
-	}
 	
-	
-	@AfterMethod()
-	public void actionaftrtest()
+	@Test(dataProvider="getTestData")
+	public void Dateselecttest(String year, String month)
 	{
-		driver.close();
+		
+	     HomePage homepage= new HomePage();
+	     homepage.clickwidgetBtn();
+	     
+	     
+		
+		
+			    
+		DatePickerPage datepickerpage = new DatePickerPage();
+		datepickerpage.enterDate(year, month);	
 	}
+	
+	
 
 }
-
