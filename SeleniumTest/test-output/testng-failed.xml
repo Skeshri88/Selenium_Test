@@ -3,16 +3,17 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test verbose="2" name="Default test">
     <classes>
-      <class name="com.qa.testcases.Assignment1Ques5"/>
+      <class name="com.qa.testcases.Assignment1Ques1"/>
     </classes>
   </test> <!-- Default test -->
   <test name="Default test(failed)">
     <classes>
-      <class name="com.qa.testcases.Assignment1Ques5">
+      <class name="com.qa.testcases.Assignment1Ques1">
         <methods>
-          <include name="VerificationContactTest"/>
+          <include name="verificationSelectable"/>
+          <include name="setUp"/>
         </methods>
-      </class> <!-- com.qa.testcases.Assignment1Ques5 -->
+      </class> <!-- com.qa.testcases.Assignment1Ques1 -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

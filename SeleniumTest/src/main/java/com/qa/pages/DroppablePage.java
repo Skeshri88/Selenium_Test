@@ -9,6 +9,10 @@ import com.qa.base.TestBase;
 
 public class DroppablePage extends TestBase
 {
+	
+	@FindBy(xpath="//div[text()='Droppable']")
+	public WebElement Droppablelabel;
+	
 	@FindBy(xpath="//div[@id='draggable']")
 	public WebElement Dragme;
 	
@@ -26,9 +30,10 @@ public class DroppablePage extends TestBase
 	
 	public void DragandDrop()
 	{
+		Droppablelabel.isDisplayed();
 		Actions act= new Actions(driver);
 		act.dragAndDrop(Dragme, Drophere).build().perform();
-		//act.clickAndHold(Dragme).moveToElement(Drophere).release(Drophere).build().perform();
+		
 		
 	}
 	

@@ -8,6 +8,7 @@ import com.qa.base.TestBase;
 import com.qa.pages.DatePickerPage;
 import com.qa.pages.HomePage;
 import com.qa.pages.InteractionsPage;
+import com.qa.pages.WidgetsPage;
 import com.qa.util.TestUtil;
 
 public class Assignment1Ques4 extends TestBase
@@ -33,18 +34,22 @@ public class Assignment1Ques4 extends TestBase
 			
 	
 	@Test(dataProvider="getTestData")
-	public void Dateselecttest(String year, String month)
+	public void Dateselecttest(String month, String year, String day, String date)
 	{
 		
 	     HomePage homepage= new HomePage();
 	     homepage.clickwidgetBtn();
 	     
+	     WidgetsPage widgetspage= new WidgetsPage();
+	     widgetspage.clickwidgetBtn();
 	     
-		
-		
-			    
+	     			    
 		DatePickerPage datepickerpage = new DatePickerPage();
-		datepickerpage.enterDate(year, month);	
+		datepickerpage.enterDate(month,year,day);	
+		
+		datepickerpage.verificationDate(date);
+		
+		
 	}
 	
 	

@@ -1,5 +1,6 @@
 package com.qa.pages;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -19,13 +20,13 @@ public class RegisterPage  extends TestBase
 	WebElement ConfirmPassword;
 	
 	@FindBy(xpath="//select[@id='phdesktopbody_0_grs_consumer[birthdate][day]']")
-	WebElement DayBirthDay;
+	WebElement Day;
 	
 	@FindBy(xpath="//select[@id='phdesktopbody_0_grs_consumer[birthdate][month]']")
-	WebElement DayMonth;
+	WebElement Month;
 	
-	@FindBy(xpath="//Select[@id='phdesktopbody_0_grs_consumer[birthdate][year]']")
-	WebElement DayYear;
+	@FindBy(xpath="//select[@id='phdesktopbody_0_grs_consumer[birthdate][year]']")
+	WebElement Year;
 	
 	@FindBy(xpath="//input[@id='phdesktopbody_0_submit']")
 	WebElement Register;
@@ -75,34 +76,43 @@ public class RegisterPage  extends TestBase
 		
 		
 	
-	public void RegisterPage()
+	public RegisterPage()
 	{
 		PageFactory.initElements(driver, this);
 	}
 	
 	
-	public void RegisterwithFields( String email, String password, String confirmpassword
+	public void RegisterwithFields(String email, String password, String confirmpassword
                                    , String day, String month, String year, String firstname,
-                                   String lastname, String country, String address, String post, String city,String middlename,String phonenumber) 
+                                   String lastname, String country, String address, String post, String city,String middlename,String phonenumber) throws InterruptedException 
 	{
+		JavascriptExecutor js= (JavascriptExecutor)driver;
+		js.executeScript("window.scrollBy(0, 300)");
+		System.out.println(email);
 		Email.sendKeys(email);
 		Password.sendKeys(password);
 		ConfirmPassword.sendKeys(confirmpassword);
 		
 		//Selecting Day
-		DayBirthDay.click();
-		Select select= new Select(DayBirthDay);
+		Day.click();
+		Select select= new Select(Day);
 		select.selectByVisibleText(day);
 		
 		//Selecting Month
-		DayMonth.click();
-		Select select1= new Select(DayMonth);
-		select.selectByVisibleText(month);
+	    Month.click();
+	    Thread.sleep(5000);
+	    System.out.println(month);
+		Select select1= new Select(Month);
+		select1.selectByVisibleText(month);
+		Thread.sleep(5000);
 		
 		//Select Year
-		DayYear.click();
-		Select select2= new Select(DayYear);
-		select.selectByVisibleText(year);
+		
+		Thread.sleep(2000);
+		System.out.println(year);
+		Year.click();		
+		Select select2= new Select(Year);
+		select2.selectByVisibleText(year);
 		
 		
 		
@@ -113,12 +123,9 @@ public class RegisterPage  extends TestBase
 			Female1.click();
 			FirstName1.sendKeys(firstname);
 			LastName1.sendKeys(lastname);
-			//Thread.sleep(5000);
 			Country1.click();
-			//Thread.sleep(2000);
 			Select select4= new Select(Country1);
 			select4.selectByVisibleText(country);
-			//Thread.sleep(5000);
 			Address1.sendKeys(address);
 			Post1.sendKeys(post);
 			City1.sendKeys(city);

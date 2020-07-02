@@ -1,5 +1,6 @@
 package com.qa.pages;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebElement;
@@ -21,8 +22,10 @@ public class SelectablePage extends TestBase
 	@FindBy(xpath="//li[text()='Cras justo odio']")
 	public WebElement CrasBtn;
 	
+	
 	@FindBy(xpath="//li[text()='Dapibus ac facilisis in']")
 	public WebElement DapiBusBtn;
+		
 	
 	@FindBy(xpath="//li[text()='Morbi leo risus']")
 	public WebElement MorbiBtn;
@@ -32,69 +35,79 @@ public class SelectablePage extends TestBase
 	public WebElement PortaBtn;
 	
 	
+	@FindBy(xpath="//ul[@id='verticalListContainer']//li")
+	public List<WebElement> AllSelectedBtnVerify;
+	
+	
+	
 	public SelectablePage()
 	{
 		PageFactory.initElements(driver,this);
 	}
 	
-	public void verifySelectableTxt(String expectedvalue)
+	public void verifySelectableTxt(String expectedvalselectabletxt)
 	{
 		String selectabletext=  SelectableTxt.getText();
-		Assert.assertEquals(selectabletext, expectedvalue);	
+		Assert.assertEquals(selectabletext, expectedvalselectabletxt);	
 	}
 	
-	public void verifylistselected(String expectedvalue)
+	public void verifylistselected(String expectedlisttext)
 	
 	{
 		String listtext=  listselected.getText();
-		Assert.assertEquals(listtext, expectedvalue);
-		listselected.isSelected();
+		Assert.assertEquals(listtext, expectedlisttext);
+		
 		
 		
 	}
 	
-	public void verifylistTxt(String expectedvalue)
-	{
-		String selectabletext=  SelectableTxt.getText();
-		Assert.assertEquals(selectabletext, expectedvalue);	
-	}
-	
-	
-	public void clickCrasBtn(String expectedvalue)
+	public void clickCrasBtn(String expectedcrastext)
 	{		
 		String CrasBtntext=  CrasBtn.getText();
 		CrasBtn.click();
-		Assert.assertEquals(CrasBtntext, expectedvalue);		
+		CrasBtn.isSelected();		
+		Assert.assertEquals(CrasBtntext, expectedcrastext);		
 		
 	}
 	
 	
-	public void clickdapiBusBtn(String expectedvalue)
+	public void clickdapiBusBtn(String expecteddapitext)
 	{
 		String DapiBusBtnText=  DapiBusBtn.getText();
 		DapiBusBtn.click();
-		Assert.assertEquals(DapiBusBtnText, expectedvalue);
+		DapiBusBtn.isSelected();
+		Assert.assertEquals(DapiBusBtnText, expecteddapitext);
 		
 	}
 	
 	
-	public void clickMorbiBtn(String expectedvalue)
+	public void clickMorbiBtn(String expectedmorbitext)
 	{
 		String MorbiBtnText=  MorbiBtn.getText();
 		MorbiBtn.click();
-		Assert.assertEquals(MorbiBtnText, expectedvalue);
+		MorbiBtn.isSelected();
+		Assert.assertEquals(MorbiBtnText, expectedmorbitext);
 		
 		
 		
 	}
 		
 	
-	public void clickPortaBtn(String expectedvalue)
+	public void clickPortaBtn(String expectedportatext)
 	{
 		String PortaBtnText=  PortaBtn.getText();	
 		PortaBtn.click();
-		Assert.assertEquals(PortaBtnText, expectedvalue);
+		PortaBtn.isSelected();		
+		Assert.assertEquals(PortaBtnText, expectedportatext);
 		
+	}
+	
+	public void verifyallselectedbutton()
+	{
+		for(WebElement e:AllSelectedBtnVerify )
+		{
+			e.isDisplayed();
+		}
 	}
 	
 	

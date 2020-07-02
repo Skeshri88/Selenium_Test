@@ -16,6 +16,10 @@ public class OlaWelComePage extends TestBase
 	@FindBy(xpath="//div[@class=' sign-style newsletter']/a[1]")
 	WebElement SigninVerification;
 	
+	@FindBy(xpath="//a[@class='event_profile_login']")
+	WebElement Signin;
+	
+	
 	
 	
 	
@@ -43,6 +47,13 @@ public class OlaWelComePage extends TestBase
 		Register.click();
 		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 		return new RegisterPage();
+	}
+	
+	public LoginPage clicksignin()
+	{
+		Signin.click();
+		return new LoginPage();
+		
 	}
 
 }

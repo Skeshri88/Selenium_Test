@@ -21,16 +21,24 @@ public class TestUtil extends TestBase
 	public static String TESTDATA_SHEET_PATH = "C:\\Users\\Admin\\SeleniumTest\\src\\main\\java\\com\\qa\\testdata\\TestDataDetails.xlsx";
 	public static Object[][] getTestData(String sheetName) {
 		FileInputStream file = null;
-		try {
+		try
+		{
 			file = new FileInputStream(TESTDATA_SHEET_PATH);
-		} catch (FileNotFoundException e) {
+		} 
+		catch (FileNotFoundException e)
+		{
 			e.printStackTrace();
 		}
-		try {
+		try
+		{
 			book = WorkbookFactory.create(file);
-		} catch (InvalidFormatException e) {
+		} 
+		catch (InvalidFormatException e) 
+		{
 			e.printStackTrace();
-		} catch (IOException e) {
+		} 
+		catch (IOException e) 
+		{
 			e.printStackTrace();
 		}
 		sheet = book.getSheet(sheetName);

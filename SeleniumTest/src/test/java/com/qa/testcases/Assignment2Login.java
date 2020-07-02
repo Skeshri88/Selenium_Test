@@ -7,10 +7,12 @@ import org.testng.annotations.Test;
 
 import com.qa.base.TestBase;
 import com.qa.pages.LoginPage;
+import com.qa.pages.OlaWelComePage;
 import com.qa.util.TestUtil;
 
 public class Assignment2Login extends TestBase
 {
+	 String sheetName ="Question2a";
 	
 	public Assignment2Login()
 	{
@@ -33,15 +35,18 @@ public class Assignment2Login extends TestBase
 	}
 	
 	
-	LoginPage loginpage= new LoginPage();
+	
 	
 	@Test(dataProvider="getLoginTestData")
 	
-	public void ValidateLoginTestdata( String UserName, String Password)
+	public void ValidateLoginTestdata( String username, String password)
 	{
 		
-		loginpage.TestLogin(UserName, Password);
+		OlaWelComePage olawelcomepage= new OlaWelComePage();
+		olawelcomepage.clicksignin();
 		
+		LoginPage loginpage= new LoginPage();
+		loginpage.testlogin(username, password);		
 	}
 	
 	@AfterMethod()

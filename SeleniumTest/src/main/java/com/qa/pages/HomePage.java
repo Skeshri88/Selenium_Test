@@ -20,7 +20,7 @@ public class HomePage extends TestBase
 	@FindBy(xpath="//h5[text()='Forms']")
     public WebElement FormsBtn;
 	
-	@FindBy(xpath="//div[@class='category-cards']//div[4]")
+	@FindBy(xpath="//h5[text()='Widgets']")
     public WebElement WidgetsBtn;
 	
 	
@@ -52,14 +52,14 @@ public class HomePage extends TestBase
 	}
 	
 	
-	public DatePickerPage clickwidgetBtn()
+	public WidgetsPage clickwidgetBtn()
 	{
 		
 		JavascriptExecutor js= (JavascriptExecutor)driver;
 		js.executeScript("window.scrollBy(0, 1000)");
 		WidgetsBtn.click();
 		driver.manage().timeouts().implicitlyWait(TestUtil.PAGE_LOAD_TIMEOUT,TimeUnit.SECONDS);
-		return new DatePickerPage();
+		return new WidgetsPage();
 		
 	}
 	 

@@ -14,7 +14,7 @@ import com.qa.util.TestUtil;
 
 public class Assignment1Ques5 extends TestBase 
 {
-	String sheetName= "Assignment5";
+	String sheetName= "Assignment55";
 	public Assignment1Ques5()
 	{
 		super();
@@ -35,19 +35,29 @@ public class Assignment1Ques5 extends TestBase
 	}
 			
 	
-	@Test(dataProvider="getTestData")
-	public void VerificationContactTest(String selectvalue, String selectone,String oldstyle) 
+	@Test(priority=1,dataProvider="getTestData")
+	public void VerificationContactTest(String  oldstyle , String selectvalue,String selectone , String expectedselectvalue, String expectedselectedone, String expectedselectoldstyle) throws InterruptedException 
 	{	
 		HomePage homepage = new HomePage();
 		homepage.clickwidgetBtn();
 		
 		WidgetsPage  WidgetsPage= new WidgetsPage();
-		WidgetsPage.selectmenuBtn();		
+		WidgetsPage.selectmenubtn();		
 		
-		SelectMenu selectmenu= new SelectMenu();
-		selectmenu.selectdropdown(selectvalue, selectone, oldstyle);
-			
+		SelectMenu selectmenu= new SelectMenu();		
+		selectmenu.selectolddropdown(oldstyle);
+		selectmenu.selectvaluedropdown(selectvalue);
+		selectmenu.selectonedropdown(selectone);
+		
+		selectmenu.verifyselecteddropdown(expectedselectvalue, expectedselectedone, expectedselectoldstyle);
+		
 	}
+	
+	
+	
+
+	
+	
 		
 	@AfterMethod()
 	public void actionaftrtest()

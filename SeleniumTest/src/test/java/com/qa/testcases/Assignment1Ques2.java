@@ -30,19 +30,17 @@ public class Assignment1Ques2 extends TestBase
 		@DataProvider
 		public Object[][]  getTestData()
 		{
-			Object data[][]=TestUtil.getTestData(sheetName);
-			return data;
-	}
+		  Object data[][]=TestUtil.getTestData(sheetName);
+		  return data;
+	   }
 	
 	
-	@Test(dataProvider="getTestData")
-
-	
-	
-	
-	public void VerificationContactTest(String firstname,String lasttname,String email,
-			    String picture,
-			   String currentaddress,String selectstate,String selectcity) throws InterruptedException 
+	@Test(dataProvider="getTestData")	
+	public void VerificationContactTest(String firstname,String lasttname, String email, String gendervalue,  String month,String year,
+			    String dayvalue, String hobbies,String picture,
+			   String currentaddress,  String number,String selectstate,String selectcity,  String expectedstudentname,  String expectedstudentemail , String expectedstudentgender
+				  , String expectedstudentmobile, String expectedstudentdob, String expectedstudenthobbies, String expectedstudentaddress, 
+				  String expectedstudentstatecity) throws InterruptedException 
 	{  
 		HomePage homepage= new HomePage();
 		homepage.clickformBtn();
@@ -53,8 +51,12 @@ public class Assignment1Ques2 extends TestBase
 		
 		StudentRegistrationPage studentregistrationpage= new StudentRegistrationPage();
 		
-		studentregistrationpage.registrationdetails(firstname, lasttname, email, 
-				picture, currentaddress, selectstate, selectcity);				
+		studentregistrationpage.registrationdetails(firstname, lasttname, email, gendervalue, month,year,dayvalue
+				,hobbies,picture, currentaddress,number, selectstate,selectcity);	
+		
+		studentregistrationpage.verificationdata(expectedstudentname, expectedstudentemail ,  expectedstudentgender
+				  ,  expectedstudentmobile,  expectedstudentdob,  expectedstudenthobbies,  expectedstudentaddress, 
+				   expectedstudentstatecity);
 	}
 		
 	@AfterMethod()

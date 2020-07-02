@@ -1,39 +1,53 @@
 package com.qa.pages;
 
-import java.util.concurrent.TimeUnit;
-
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.qa.base.TestBase;
 
 public class MMTFlightDetailsPage extends TestBase
 {
 	
-	@FindBy(xpath="//button[@id='bookbutton-RKEY:54d8cf0a-d19f-4dc6-9c3d-78ce72d48a12:50_0']")
+	@FindBy(xpath="//div[@id='fli_list_item_0c27e5a5-552e-48e7-99be-d194797e4d64']//div[@class='dept-options']//button[@class='ViewFareBtn  text-uppercase ']")
 	WebElement ViewFares;
 	
-	@FindBy(xpath="//*[@id=\"fli_list_item_fc597b7b-62b6-4f09-9e23-93cb1abefce7\"]/div[3]/div[1]/div[2]/div[2]/button")
+	@FindBy(xpath="/html/body/div[1]/div/div[2]/div[2]/div/div[2]/div[3]/div/div[2]/div[3]/div[1]/div[2]/div[2]/div[2]/button")
 	WebElement BookNow;
 	
 	
 	public MMTFlightDetailsPage()
 	{
-		//Initializing all above elements 
+		
 		PageFactory.initElements(driver,this);
 	}
 	
 
 
-	public MMTReviewPage FlightDetails() 
+	public MMTReviewPage FlightDetails() throws InterruptedException 
 	{
-		driver.manage().timeouts().implicitlyWait(30,TimeUnit.SECONDS);
-		ViewFares.click();
-		BookNow.click();
-		return new  MMTReviewPage();
 		
+		WebDriverWait wait = new WebDriverWait(driver,30);
+		WebElement viewfaresbtn= wait.until(ExpectedConditions.elementToBeClickable(ViewFares));
+		viewfaresbtn.click();
 		
+		WebDriverWait wait1 = new WebDriverWait(driver,30);
+		WebElement booknowbtn= wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"fli_list_item_0c27e5a5-552e-48e7-99be-d194797e4d64\"]/div[3]/div[1]/div[2]/div[2]/div[2]/button")));
+		viewfaresbtn.click();	
+		booknowbtn.click();
+		String parentwindow= driver.getWindowHandle();
+		System.out.println("ParentWindow handle is"+  parentwindow );
+		
+		for(String Childwindow:driver.getWindowHandles())
+		{
+			driver.switchTo().window(Childwindow);
+		}
+		System.out.println(driver.getTitle());
+		
+		return new  MMTReviewPage();	
 		
 	}
 
